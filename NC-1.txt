@@ -1,0 +1,14 @@
+local component = require("component")
+local rc = component.nc_fusion_reactor
+local cbtemp = 123456
+--[[123456 was replaced by the optimum temperature for fusion reactor fuel, which can be found in the JEI.]]
+--Note the units of temperature given in JEI.
+
+while true do
+  rctemp = rc.getTemperature()
+  if rctemp<cbtemp*0.99 then
+  rc.activate()
+  elseif rctemp>cbtemp*1.01 then
+  rc.deactivate()
+  end
+end
